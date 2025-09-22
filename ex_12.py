@@ -1,16 +1,13 @@
+import re
 import keyword
+
 name = input()
-if keyword.iskeyword(name):                        # key world
+
+if not name:
     print("Нет")
-if name[0].isdigit():                              # The number
+elif keyword.iskeyword(name):
     print("Нет")
+elif re.match(r'^[a-zA-Z_]\w*$', name):
+    print("Да")
 else:
-    flag = 1
-    for index in name:
-        if not (index.isalnum() or index == '_'):  # Letter or number
-            flag = 0
-            break
-    if flag == 1:
-        print("Да")
-    else:
-        print("Нет")
+    print("Нет")
